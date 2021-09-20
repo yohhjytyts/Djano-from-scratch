@@ -1,9 +1,10 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse , redirect
 from datetime import datetime
-from home.models import Contact
+from home.models import *
 from django.contrib import messages
 
 # Create your views here.
+#password is Sachin$$$***000
 def index(request):
     return render(request,'index.html')
     #return HttpResponse('Hello welcome to sachin world!!!')
@@ -23,4 +24,31 @@ def contact(request):
     return render(request,'contact.html')
 def employe(request):
     return render(request,'employe.html')
-   # return HttpResponse('Hello welcome contacts page!!!')
+   # return HttpResponse('Hello welcome contacts page!!!)'
+
+def employe_planning(request):
+    if request.method=="POST":
+        name=request.POST.get('name')
+        desc=request.POST.get('desc')
+        C_name=request.POST.get('C_name')
+        R_time=request.POST.get('R_time')
+        loc=request.POST.get('location')
+        quantity=request.POST.get('quantity')
+        rate=request.POST.get('rate')
+        value=request.POST.get('value')
+        planning = Planning(name=name, desc=desc, C_name=C_name, time=R_time, loc=loc, quantity=quantity,rate=rate,value=value,date=datetime.today())
+        planning.save()
+
+    return render(request,'planning.html')
+
+def employe_viewplanning(request):
+    return render(request,'viewplanning.html')
+
+#login & logout
+
+# def login(request):
+#     return render(request,'login.html')
+
+# def logout(request):
+#     return render(request,'logout.html')
+   
