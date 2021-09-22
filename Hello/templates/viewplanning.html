@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}View Planning {% endblock title %}
+{% block body %}
+{% comment %} {% for i in view_planning%}
+<h5 class="text-center" >{{i.name}}</h5>
+<h5>{{i.desc}}</h5>
+<h5>{{i.C_name}}</h5>
+<h5>{{i.time}}</h5>
+<h5>{{i.loc}}</h5>
+<h5>{{i.quantity}}</h5>
+<h5>{{i.rate}}</h5>
+<h5>{{i.valur}}</h5>
+<h5>{{i.date}}</h5>
+ {% endfor %} {% endcomment %}
+<table class="table table-dark table-striped ">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">C_name</th>
+      <th scope="col">Milestone</th>
+      <th scope="col">Location</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Rate</th>
+      <th scope="col">Value</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for i in view_planning%}
+    <tr>
+      <th scope="row">{{i.name}}</th>
+      <td>{{i.desc}}</td>
+      <td>{{i.C_name}}</td>
+      <td>{{i.time}}</td>
+      <td>{{i.loc}}</td>
+      <td>{{i.quantity}}</td>
+      <td>{{i.rate}}</td>
+      <td>{{i.value}}</td>
+      <td>{{i.date}}</td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock body %}
+

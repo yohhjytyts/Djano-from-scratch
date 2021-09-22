@@ -42,7 +42,9 @@ def employe_planning(request):
     return render(request,'planning.html')
 
 def employe_viewplanning(request):
-    return render(request,'viewplanning.html')
+    view_planning = Planning.objects.all()
+    print(view_planning,'jjjjjjjjjj')
+    return render(request,'viewplanning.html',locals())
 
 #login & logout
 
