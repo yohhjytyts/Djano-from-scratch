@@ -2,8 +2,9 @@ from django.shortcuts import render, HttpResponse , redirect
 from datetime import datetime
 from home.models import *
 from django.contrib import messages
+from django.contrib.auth.models import User
 
-# Create your views here.
+# Create your views here.       
 #password is Sachin$$$***000
 def index(request):
     return render(request,'index.html')
@@ -40,17 +41,19 @@ def employe_planning(request):
         planning.save()
 
     return render(request,'planning.html')
-
+from django.contrib.auth.decorators import login_required
+@login_required(login_url="/login/")
 def employe_viewplanning(request):
     view_planning = Planning.objects.all()
     print(view_planning,'jjjjjjjjjj')
     return render(request,'viewplanning.html',locals())
 
-#login & logout
+# login & logout
 
-# def login(request):
-#     return render(request,'login.html')
 
-# def logout(request):
-#     return render(request,'logout.html')
+def login(request):
+    return render(request,'login.html')
+
+def logout(request):
+    return render(request,'logout.html')
    
