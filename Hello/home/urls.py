@@ -11,5 +11,5 @@ urlpatterns = [
     path('employee/planning',views.employe_planning,name='employe'),
     path('employee/viewplanning',views.employe_viewplanning,name='employe'),
     path('login', auth_views.LoginView.as_view(template_name="login.html"),name='login'),
-    path('logout', views.logout,name='logout'),
+    path('logout', views.logoutuser,name='logoutuser'),
 ]
