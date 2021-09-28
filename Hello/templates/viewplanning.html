@@ -21,10 +21,12 @@
       <th scope="col">C_name</th>
       <th scope="col">Milestone</th>
       <th scope="col">Location</th>
+      <th scope="col">UOM</th>
       <th scope="col">Quantity</th>
       <th scope="col">Rate</th>
       <th scope="col">Value</th>
       <th scope="col">Date</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -35,10 +37,14 @@
       <td>{{i.C_name}}</td>
       <td>{{i.time}}</td>
       <td>{{i.loc}}</td>
+      <td>{{i.uom}}</td>
       <td>{{i.quantity}}</td>
       <td>{{i.rate}}</td>
       <td>{{i.value}}</td>
       <td>{{i.date}}</td>
+      <td>{% if not request.user.is_superuser %}
+        <a class="btn btn-primary" href="#" type="button">Log</a>
+        {% endif %}</td>
 
     </tr>
     {% endfor %}

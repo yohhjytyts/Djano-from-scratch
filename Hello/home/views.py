@@ -39,22 +39,26 @@ def employe(request):
    # return HttpResponse('Hello welcome contacts page!!!)'
 @login_required(login_url="/login")
 def employe_planning(request):
+
     if request.method=="POST":
+        print(request.POST)
         name=request.POST.get('name')
         desc=request.POST.get('desc')
         C_name=request.POST.get('C_name')
         R_time=request.POST.get('R_time')
         loc=request.POST.get('location')
+        uom=request.POST.get('uom')
         quantity=request.POST.get('quantity')
         rate=request.POST.get('rate')
         value=request.POST.get('value')
-        planning = Planning(name=name, desc=desc, C_name=C_name, time=R_time, loc=loc, quantity=quantity,rate=rate,value=value,date=datetime.today())
+        planning = Planning(name=name, desc=desc, C_name=C_name, time=R_time, loc=loc, uom=uom, quantity=quantity,rate=rate,value=value,date=datetime.today())
         planning.save()
+        messages.success(request, "Target created successfully!")
     return render(request,'planning.html')
 
 @login_required(login_url="/login")
 def employe_viewplanning(request):
-    view_planning = Planning.objects.all()
+    view_planning = Planning.objects.all().order_by("uom")
     user_wiseplanning=[]
     if not request.user.is_superuser:
         for i in view_planning:
